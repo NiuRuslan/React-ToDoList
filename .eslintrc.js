@@ -23,5 +23,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'react/state-in-constructor': 0
   },
+  parser: 'babel-eslint',
 };

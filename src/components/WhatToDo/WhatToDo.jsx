@@ -1,25 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './WhatToDo.css';
 
-const ToDo = ({ label, important = false }) => {
-  const style = {
-    color: important ? 'steelblue' : 'black',
-    fontWeight: important ? 'bold' : 'normal',
+export default class ToDo extends Component {
+  state = { done: false, important: false }
+
+  onLabelClick = () => {
+    this.setState(({ done }) => ({
+      done: !done,
+    }));
   };
 
-  return (
-    <span className="what-to-do">
-      <span className="what-to-do-label" style={style}>
-        {label}
-      </span>
-      <button type="button" className="btn btn-outline-success btn-sm float-right">
-        <i className="fa fa-exclamation" />
-      </button>
-      <button type="button" className="btn btn-outline-danger btn-sm float-right">
-        <i className="fa fa-trash-o" />
-      </button>
-    </span>
-  );
-};
+  onMarkImportant = () => {
+    this.setState(({ important }) => ({
+      important: !important,
+    }));
+  }
 
-export default ToDo;
+  render() {
+    const { label, onDeleted } = this.props;
+    const { done, important } = this.state;
+
+    let classNames = 'what-to-do';
+    if (done) {
+      classNames += ' done';
+    }
+
+    if (important) {
+      classNames += ' important';
+    }
+
+    return (
+      <span className={classNames}>
+        <span className="what-to-do-label" onClick={this.onLabelClick}>
+          {label}
+        </span>
+        <button type="button" className="btn btn-outline-success btn-sm float-right" onClick={this.onMarkImportant}>
+          <i className="fa fa-exclamation" />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-sm float-right" onClick={onDeleted}>
+          <i className="fa fa-trash-o" />
+        </button>
+      </span>
+    );
+  }
+}
