@@ -1,0 +1,24 @@
+.what-to-do {
+  font-size: 1.25rem;
+}
+
+.what-to-do button {
+  width: 35px;
+  margin: 3px;
+}
+
+.what-to-do-label {
+  margin-left: 1.25rem;
+  line-height: 35px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.what-to-do.done .what-to-do-label {
+  text-decoration: line-through;
+}
+
+.what-to-do.important .what-to-do-label {
+  font-weight: bold;
+  color: steelblue;
+}
