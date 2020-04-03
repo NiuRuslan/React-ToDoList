@@ -1,6 +1,6 @@
 {
+  "homepage": ".",
   "name": "to-do",
-  "homepage": "https://niuruslan.github.io/React-ToDoList/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

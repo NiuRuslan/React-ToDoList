@@ -13,19 +13,19 @@ export default class App extends Component {
 
   state = {
     toDoData: [
-      this.createToDo('Drink Tea'),
-      this.createToDo('Do awesome app'),
-      this.createToDo('Done it'),
+      this.createToDo('Drink Tea', true),
+      this.createToDo('Do React ToDo List', true, true),
+      this.createToDo('Do something more'),
     ],
     query: '',
     filter: 'all',
   };
 
-  createToDo(label) {
+  createToDo(label, done = false, important = false) {
     return {
       label,
-      important: false,
-      done: false,
+      important,
+      done,
       id: this.id++,
     };
   }
